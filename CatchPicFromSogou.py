@@ -6,7 +6,7 @@ url="http://pic.sogou.com/pics?query=%C2%ED%BF%CB%B1%AD&w=05009900&p=40030500&_a
 
 xpath='//div[@id="imgid"]/ul/li/a/img'
 
-driver = webdriver.Chrome(executable_path=r"./webDriver/chromedriver")
+driver = webdriver.Chrome(executable_path=r"./webDriver/chromedriver.exe")
 
 # driver.maximize_window()
 
@@ -17,7 +17,7 @@ driver.get(url)
 pos=0
 m=0
 
-for i in range(10):
+for i in range(25):
     pos+=i*500
     js="document.documentElement.scrollTop=%d" % pos
     driver.execute_script(js)

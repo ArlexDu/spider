@@ -2,9 +2,9 @@ from selenium import webdriver
 import time
 import urllib
 
-url="http://pic.sogou.com/pics?query=%C2%ED%BF%CB%B1%AD&w=05009900&p=40030500&_asf=pic.sogou.com&_ast=1511437004&sc=index&sut=2332&sst0=1511437003957"
+url="http://image.baidu.com/search/index?tn=baiduimage&ps=1&ct=201326592&lm=-1&cl=2&nc=1&ie=utf-8&word=%E9%A9%AC%E5%85%8B%E6%9D%AF"
 
-xpath='//div[@id="imgid"]/ul/li/a/img'
+xpath='//li[contains(@class,"imgitem")]/div/a/img'
 
 driver = webdriver.Chrome(executable_path=r"./webDriver/chromedriver.exe")
 
@@ -28,10 +28,11 @@ for i in range(25):
         if img_url != None and img_url not in img_url_array:
             img_url_array.append(img_url)
             m+=1
+            type = img_url.split('.')[-1]
             print("download {}".format(img_url))
-            filename=str(m)+'.jpg'
+            filename=str(m)+'.'+type
             data=urllib.request.urlopen(img_url).read()
-            f=open('./images/'+filename,'wb')
+            f=open('./baiduimages/'+filename,'wb')
             f.write(data)
             f.close()
 driver.close()

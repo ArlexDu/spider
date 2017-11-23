@@ -1,10 +1,13 @@
 from selenium import webdriver
 import time
 import urllib
+from selenium.common.exceptions import NoSuchElementException
 
-url="http://pic.sogou.com/pics?query=%C2%ED%BF%CB%B1%AD&w=05009900&p=40030500&_asf=pic.sogou.com&_ast=1511437004&sc=index&sut=2332&sst0=1511437003957"
+url="https://cn.bing.com/images/search?q=%E9%A9%AC%E5%85%8B%E6%9D%AF&FORM=HDRSC2"
 
-xpath='//div[@id="imgid"]/ul/li/a/img'
+xpath_img='//div[contains(@class,"imgpt")]/a/div/img'
+
+xpath_seemore ='//div[contains(@class,"seemore")]/a'
 
 driver = webdriver.Chrome(executable_path=r"./webDriver/chromedriver.exe")
 
@@ -23,7 +26,7 @@ for i in range(25):
     driver.execute_script(js)
     time.sleep(1)
 
-    for element in driver.find_elements_by_xpath(xpath):
+    for element in driver.find_elements_by_xpath(xpath_img):
         img_url = element.get_attribute('src')
         if img_url != None and img_url not in img_url_array:
             img_url_array.append(img_url)
@@ -31,7 +34,11 @@ for i in range(25):
             print("download {}".format(img_url))
             filename=str(m)+'.jpg'
             data=urllib.request.urlopen(img_url).read()
-            f=open('./images/'+filename,'wb')
+            f=open('./bingimages/'+filename,'wb')
             f.write(data)
             f.close()
+    try:
+        driver.find_element_by_xpath(xpath_seemore).click()
+    except:
+        continue
 driver.close()
