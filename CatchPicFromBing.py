@@ -1,7 +1,6 @@
 from selenium import webdriver
 import time
 import urllib
-from selenium.common.exceptions import NoSuchElementException
 
 url="https://cn.bing.com/images/search?q=%E9%A9%AC%E5%85%8B%E6%9D%AF&FORM=HDRSC2"
 

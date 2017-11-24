@@ -38,8 +38,8 @@ for i in range(1):
             print("download {}".format(img_url))
             filename=str(m)+'.'+type
             data=requests.get(img_url).text
-            print('data {0}'.format(data))
-            f=open('./baiduimages/'+filename,'wb')
-            f.write(data.encode())
-            f.close()
+            # print('data {0}'.format(data))
+            # f=open('./baiduimages/'+filename,'wb')
+            # f.write(data.encode())
+            # f.close()
 driver.close()

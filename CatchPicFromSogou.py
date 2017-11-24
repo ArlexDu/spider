@@ -31,7 +31,7 @@ for i in range(25):
             print("download {}".format(img_url))
             filename=str(m)+'.jpg'
             data=urllib.request.urlopen(img_url).read()
-            f=open('./images/'+filename,'wb')
+            f=open('./sougouimages/'+filename,'wb')
             f.write(data)
             f.close()
 driver.close()
