@@ -1,0 +1,1 @@
+this folder store images which download from Sougou
